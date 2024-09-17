@@ -19,11 +19,8 @@ With some recent versions, there are some issues.
 ## How to reproduce issues
 
 ```bash
-$ make c
-$ make p
-$ make run
+$ mvn -f pom280.xml clean compile package
 $ java -jar target/encoding-issue-1.0.0.jar
-$ java -jar target/encoding-issue-1.0.0-jar-with-dependencies.jar
 ```
 
 ## Expected results
@@ -43,15 +40,13 @@ dc:title=404 Not Found Content-Encoding=ISO-8859-1 Content-Type=text/html; chars
 When executing the ``java -jar target/encoding-issue-1.0.0.jar`` command, we will get the following unexpected result.
 
 ```text
-builtin: https://www.yadiary.net/notfound
-builtin: bodyBytes.length=196
-
+...
 Error: Failed to detect the character encoding of a document
+...
 ```
-
 # References
 
 * [https://stackoverflow.com/questions/51382751/maven-exec-works-but-java-jar-does-not](https://stackoverflow.com/questions/51382751/maven-exec-works-but-java-jar-does-not)
-
+* [https://github.com/HubSpot/SlimFast](https://github.com/HubSpot/SlimFast)
 
 
